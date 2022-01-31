@@ -2,6 +2,7 @@ public class Savings_S2022_Daniele_Espinet extends Account_S2022_Daniele_Espinet
 
 {
 
+<<<<<<< HEAD
 private double balance
 
 public Savings_S2022_Daniele_Espinet()
@@ -61,4 +62,6 @@ balance = funds + balance;
 
 }
 
+=======
+>>>>>>> parent of 52d8a82 (update)
 }
