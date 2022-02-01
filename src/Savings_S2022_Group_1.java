@@ -1,10 +1,10 @@
-public class Checking_S2022_Daniele_Espinet extends Account_S2022_Daniele_Espinet
+public class Savings_S2022_Group_1 extends Account_S2022_Group_1
 
 {
-	
+
 private double balance;
 
-public Checking_S2022_Daniele_Espinet()
+public Savings_S2022_Group_1()
 
 {
 

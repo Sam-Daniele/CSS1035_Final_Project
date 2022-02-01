@@ -1,17 +1,17 @@
-public class Account_S2022_Daniele_Espinet
+public class Account_S2022_Group_1
 
 {
 	
 private double balance;
 
-public Account_S2022_Daniele_Espinet()
+public Account_S2022_Group_1()
 
 {
 	
 	
 }
 
-public Account_S2022_Daniele_Espinet(double newBalance)
+public Account_S2022_Group_1(double newBalance)
 
 {
 	
