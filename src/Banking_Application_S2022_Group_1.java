@@ -8,6 +8,8 @@ public static void main(String[] args)
 
 System.out.println("Welcome to Group 1 Bank");
 
+System.out.println("Welcome to Group 1 Bank");
+
 Checking_S2022_Group_1 checkingAccount = new Checking_S2022_Group_1();
 
 Savings_S2022_Group_1 savingsAccount = new Savings_S2022_Group_1();
