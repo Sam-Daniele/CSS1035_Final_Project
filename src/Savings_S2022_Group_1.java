@@ -1,64 +1,45 @@
-public class Savings_S2022_Group_1 extends Account_S2022_Group_1
+public class Savings_S2022_Group_1 extends Account_S2022_Group_1 {
 
-{
+	private double balance;
 
-private double balance;
+	public Savings_S2022_Group_1() {
 
-public Savings_S2022_Group_1()
+	}
 
-{
+	public double getBalance() {
 
-}
+		return balance;
 
-public double getBalance() 
+	}
 
-{
-	
-return balance;
+	public void setBalance(double balance) {
 
-}
+		this.balance = balance;
 
+	}
 
-public void setBalance(double balance) 
+	public void withdraw(double funds) {
 
-{
-	
-this.balance = balance;
+		if (funds >= 0) {
 
-}
+			if (funds <= getBalance()) {
 
-public void withdraw(double funds)
+				setBalance(getBalance() - funds);
 
-{
-	
-if (funds >= 0)
-	
-{
-	
-if (funds <= getBalance())
-	
-{
-	
-setBalance(getBalance() - funds);
+			}
 
-}
+		}
 
-}
+	}
 
-}
+	public void deposit(double funds) {
 
-public void deposit(double funds)
+		if (funds > 0) {
 
-{
-	
-if (funds > 0)
-	
-{
-	
-balance = funds + balance;
+			balance = funds + balance;
 
-}
+		}
 
-}
+	}
 
 }

@@ -1,50 +1,35 @@
-public class Account_S2022_Group_1
+public class Account_S2022_Group_1 {
 
-{
-	
-private double balance;
+	private double balance;
 
-public Account_S2022_Group_1()
+	public Account_S2022_Group_1() {
 
-{
-	
-	
-}
+	}
 
-public Account_S2022_Group_1(double newBalance)
+	public Account_S2022_Group_1(double newBalance) {
 
-{
-	
-balance = newBalance;
+		balance = newBalance;
 
-}
+	}
 
-public void withdraw(double funds)
+	public void withdraw(double funds) {
 
-{
-	
-if (funds != 0 ) 
+		if (funds != 0) {
 
-{
+			balance = balance - funds;
 
-balance = balance - funds;
-	
-}
+		}
 
-}
+	}
 
-public void deposit(double funds)
+	public void deposit(double funds) {
 
-{
-	
-if (funds != 0 ) 
-	
-{
-	
-balance = funds + balance;
+		if (funds != 0) {
 
-}
+			balance = funds + balance;
 
-}
+		}
+
+	}
 
 }

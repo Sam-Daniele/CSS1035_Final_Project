@@ -1,27 +1,31 @@
-public class Banking_Application_S2022_Group_1 
+public class Banking_Application_S2022_Group_1 {
 
-{
+	public static void main(String[] args) {
 
-public static void main(String[] args) 
+		System.out.println("Welcome to Group 1 Bank");
 
-{
+		Checking_S2022_Group_1 checkingAccount = new Checking_S2022_Group_1();
 
-System.out.println("Welcome to Group 1 Bank");
+		Savings_S2022_Group_1 savingsAccount = new Savings_S2022_Group_1();
 
-Checking_S2022_Group_1 checkingAccount = new Checking_S2022_Group_1();
+		double deposit = 1000;
 
-Savings_S2022_Group_1 savingsAccount = new Savings_S2022_Group_1();
+		checkingAccount.deposit(deposit);
 
-double deposit = 100;
+		System.out.println(checkingAccount.getBalance() + " dollars has been deposited into your checking account");
 
-checkingAccount.deposit(deposit);
+		savingsAccount.deposit(deposit);
 
-System.out.println(checkingAccount.getBalance() + " dollars has been deposited into your checking account");
+		System.out.println(savingsAccount.getBalance() + " dollars has been deposited into your savings account");
 
-savingsAccount.deposit(deposit);
-
-System.out.println(savingsAccount.getBalance() + " dollars has been deposited into your savings account");
-
-}
+		checkingAccount.withdraw(100);
+		System.out.println(checkingAccount.getBalance() + "dollars in your checking account.");
+		
+		checkingAccount.withdraw(100);
+		System.out.println(checkingAccount.getBalance() + "dollars in your checking account.");
+		
+		checkingAccount.withdraw(100);
+		System.out.println(checkingAccount.getBalance() + "dollars in your checking account.");
+	}
 
 }
