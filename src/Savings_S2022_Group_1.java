@@ -20,12 +20,14 @@ public class Savings_S2022_Group_1 extends Account_S2022_Group_1 {
 
 	public void withdraw(double funds) {
 
-		if (funds >= 0) {
+		if (funds > 0) {
 
 			if (funds <= getBalance()) {
 
 				setBalance(getBalance() - funds);
 
+			}else {
+				//error message?
 			}
 
 		}

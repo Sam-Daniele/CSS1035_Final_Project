@@ -1,4 +1,4 @@
-public class Account_S2022_Group_1 {
+public abstract class Account_S2022_Group_1 {
 
 	private double balance;
 
@@ -14,7 +14,7 @@ public class Account_S2022_Group_1 {
 
 	public void withdraw(double funds) {
 
-		if (funds != 0) {
+		if (funds > 0) {			//		NEEDS balance>amount check
 
 			balance = balance - funds;
 
@@ -24,7 +24,7 @@ public class Account_S2022_Group_1 {
 
 	public void deposit(double funds) {
 
-		if (funds != 0) {
+		if (funds > 0) {
 
 			balance = funds + balance;
 
