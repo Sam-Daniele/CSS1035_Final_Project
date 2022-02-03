@@ -11,14 +11,29 @@ public abstract class Account_S2022_Group_1 {
 		balance = newBalance;
 
 	}
+	public double getBalance() {
+
+		return balance;
+
+	}
+
+	public void setBalance(double balance) {
+
+		this.balance = balance;
+
+	}
 
 	public void withdraw(double funds) {
 
-		if (funds > 0) {			//		NEEDS balance>amount check
+		if (funds > 0) {
+			if (funds <= this.balance) {
 
-			balance = balance - funds;
+				setBalance(getBalance() - funds);
 
-		}
+			}else 
+				System.out.println("Balance is not enough to withdraw chosen amount.");
+		}else
+			System.out.println("Invalid amount");
 
 	}
 
@@ -26,7 +41,7 @@ public abstract class Account_S2022_Group_1 {
 
 		if (funds > 0) {
 
-			balance = funds + balance;
+			this.balance = funds + balance;
 
 		}
 
