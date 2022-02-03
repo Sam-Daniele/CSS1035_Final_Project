@@ -1,9 +1,10 @@
 public abstract class Account_S2022_Group_1 {
 
 	private double balance;
-
+	public int account_number;
+	
 	public Account_S2022_Group_1() {
-
+		balance=0.00;
 	}
 
 	public Account_S2022_Group_1(double newBalance) {
@@ -39,11 +40,10 @@ public abstract class Account_S2022_Group_1 {
 
 	public void deposit(double funds) {
 
-		if (funds > 0) {
-
+		if (funds > 0) 
 			this.balance = funds + balance;
-
-		}
+		else
+			System.out.println("Invalid amount");
 
 	}
 
