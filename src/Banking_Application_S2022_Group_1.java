@@ -16,16 +16,19 @@ public class Banking_Application_S2022_Group_1 {
 
 		savingsAccount.deposit(deposit);
 
-		System.out.println(savingsAccount.getBalance() + " dollars has been deposited into your savings account");
+		System.out.println(savingsAccount.getBalance() + " dollars has been deposited into your savings account\n");
 
+		System.out.println("Withdrawing 100 dollars from the account");
 		checkingAccount.withdraw(100);
-		System.out.println(checkingAccount.getBalance() + "dollars in your checking account.");
+		System.out.println(checkingAccount.getBalance() + " dollars in your checking account.\n");
 		
+		System.out.println("Withdrawing 100 dollars from the account");
 		checkingAccount.withdraw(100);
-		System.out.println(checkingAccount.getBalance() + "dollars in your checking account.");
+		System.out.println(checkingAccount.getBalance() + " dollars in your checking account.\n");
 		
+		System.out.println("Withdrawing 100 dollars from the account");
 		checkingAccount.withdraw(100);
-		System.out.println(checkingAccount.getBalance() + "dollars in your checking account.");
+		System.out.println(checkingAccount.getBalance() + " dollars in your checking account.\n");
 	}
 
 }

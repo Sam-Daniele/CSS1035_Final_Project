@@ -31,6 +31,7 @@ public class Checking_S2022_Group_1 extends Account_S2022_Group_1 {
 	public void withdrawFees() {
 		if (numOfWithdrawals > 2) {
 			setBalance(getBalance() - feeCharge);
+			System.out.println("Withdrawals fees are being applied.");
 		}
 		
 	}
