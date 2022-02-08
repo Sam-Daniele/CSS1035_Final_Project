@@ -1,3 +1,4 @@
+package banking_application;
 public class Checking_S2022_Group_1 extends Account_S2022_Group_1 {
 
 	private double feeCharge = 10;
