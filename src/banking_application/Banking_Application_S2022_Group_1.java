@@ -8,8 +8,6 @@ public class Banking_Application_S2022_Group_1 {
 		
 		Checking_S2022_Group_1 checkingAccount = new Checking_S2022_Group_1();
 
-		Savings_S2022_Group_1 savingsAccount = new Savings_S2022_Group_1();
-
 		System.out.println("Welcome to Group 1 Bank.");
 		
 		Scanner deposit = new Scanner(System.in);
@@ -42,6 +40,10 @@ public class Banking_Application_S2022_Group_1 {
 			}
 		
 		System.out.println("The balance of your checking account is " + checkingAccount.getBalance() + " dollars.");
+		
+		deposit.close();
+		
+		withdraw.close();
 	
 	}
 
