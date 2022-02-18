@@ -18,21 +18,12 @@ public class Banking_Application_S2022_Group_1 {
 		
 		double depositValue = deposit.nextDouble();
 
-		try
-		
-		{
-			
-		checkingAccount.deposit(depositValue);
-		
-		}
-		
-		catch(Exception	Negative_Exception)
-		
-		{
-			
-		System.out.println("You cannot deposit a negative number into your checking account.");
-				
-		}
+			try{
+				checkingAccount.deposit(depositValue);
+			}
+			catch(Negative_Exception Neg_Exc){
+				System.out.println("You cannot deposit a negative number into your checking account.");
+			}
 		
 		Scanner withdraw = new Scanner(System.in);
 		
@@ -40,21 +31,15 @@ public class Banking_Application_S2022_Group_1 {
 		
 		double withdrawValue = withdraw.nextDouble();
 		
-		try
-		
-		{
-			
-		checkingAccount.withdraw(withdrawValue);
-		
-		}
-		
-		catch(Exception	Negative_Exception)
-		
-		{
-			
-		System.out.println("You cannot withdraw a negative number from your checking account.");
-				
-		}
+			try{
+				checkingAccount.withdraw(withdrawValue);
+			}
+			catch(Negative_Exception Neg_Exc){
+				System.out.println("You cannot withdraw a negative number from your checking account.");	
+			}
+			catch(Overdraft_Exception Overd_Exc) {
+				System.out.println("Balance is not enough to withdraw chosen amount.");
+			}
 		
 		System.out.println("The balance of your checking account is " + checkingAccount.getBalance() + " dollars.");
 	

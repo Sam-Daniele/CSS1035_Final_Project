@@ -25,7 +25,7 @@ public abstract class Account_S2022_Group_1 {
 
 	}
 
-	public void withdraw(double funds) throws Negative_Exception {
+	public void withdraw(double funds) throws Negative_Exception, Overdraft_Exception {
 
 		if (funds > 0) {
 			if (funds <= this.balance) {
@@ -33,9 +33,8 @@ public abstract class Account_S2022_Group_1 {
 				setBalance(getBalance() - funds);
 
 			}else 
-				System.out.println("Balance is not enough to withdraw chosen amount.");
+				throw new Overdraft_Exception(funds);
 		}else
-			
 			throw new Negative_Exception(funds);
 
 	}
@@ -43,24 +42,15 @@ public abstract class Account_S2022_Group_1 {
 	public void deposit(double funds) throws Negative_Exception {
 
 		if (funds > 0) 
-			
 		{
+			this.balance = funds + balance;
 			
-		this.balance = funds + balance;
-		
-		System.out.println(funds + " dollars has been deposited into your checking account.");
-		
+			System.out.println(funds + " dollars has been deposited into your checking account.");
 		}
 			
-		else	
-		
-		{
-		
-		throw new Negative_Exception(funds);
-			
-		}
-			
-
+		else
+			throw new Negative_Exception(funds);
+	
 	}
 
 }

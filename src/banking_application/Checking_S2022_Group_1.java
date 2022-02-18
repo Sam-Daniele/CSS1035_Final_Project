@@ -12,7 +12,7 @@ public class Checking_S2022_Group_1 extends Account_S2022_Group_1 {
 		super(newBalance);
 	}
 
-	public void withdraw(double funds) throws Negative_Exception {
+	public void withdraw(double funds) throws Negative_Exception, Overdraft_Exception {
 
 		if (funds > 0) {
 
@@ -24,10 +24,10 @@ public class Checking_S2022_Group_1 extends Account_S2022_Group_1 {
 				
 				System.out.println(funds + " dollars has been withdrawn from your checking account.");
 
-			}else 
-				System.out.println("Balance is not enough to withdraw chosen amount.");
+			}else
+				throw new Overdraft_Exception(funds);
 		}else
-			
+	
 			throw new Negative_Exception(funds);
 			
 	}
