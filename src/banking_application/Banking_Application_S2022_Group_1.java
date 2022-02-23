@@ -12,8 +12,6 @@ public class Banking_Application_S2022_Group_1 {
 		
 		Scanner deposit = new Scanner(System.in);
 		
-		
-		
 		while(true) {
 			System.out.println("How much would you like to deposit into your checking account?");
 			if(deposit.hasNextDouble()) {
@@ -37,24 +35,27 @@ public class Banking_Application_S2022_Group_1 {
 		
 		Scanner withdraw = new Scanner(System.in);
 		
+		while(true) {		
 		System.out.println("How much would you like to withdraw from your checking account?");
-		
-		if(withdraw.hasNextDouble()) {
-		
-			double withdrawValue = withdraw.nextDouble();
 			
-				try{
-					checkingAccount.withdraw(withdrawValue);
-				}
-				catch(Negative_Exception Neg_Exc){
-					System.out.println("You cannot withdraw a negative number from your checking account.");	
-				}
-				catch(Overdraft_Exception Overd_Exc) {
-					System.out.println("Balance is not enough to withdraw chosen amount.");
-				}
-		}else
-			System.out.println("Value inserted is not a valid number.");
-		
+			if(withdraw.hasNextDouble()) {
+				double withdrawValue = withdraw.nextDouble();
+				
+					try{
+						checkingAccount.withdraw(withdrawValue);
+					}
+					catch(Negative_Exception Neg_Exc){
+						System.out.println("You cannot withdraw a negative number from your checking account.");	
+					}
+					catch(Overdraft_Exception Overd_Exc) {
+						System.out.println("Balance is not enough to withdraw chosen amount.");
+					}
+					break;
+			}else {
+				System.out.println("Value inserted is not a valid number.");
+				withdraw.nextLine();
+			}
+		}
 		System.out.println("The balance of your checking account is " + checkingAccount.getBalance() + " dollars.");
 		
 		deposit.close();
