@@ -24,7 +24,11 @@ public abstract class Account_S2022_Group_1 {
 		this.balance = balance;
 
 	}
-
+	
+	/*
+	 * Method to withdraw funds from an account.
+	 * Exceptions are thrown when the user attempts to withdraw a negative amount or overdraft.
+	 */
 	public void withdraw(double funds) throws Negative_Exception, Overdraft_Exception {
 
 		if (funds > 0) {
@@ -39,6 +43,10 @@ public abstract class Account_S2022_Group_1 {
 
 	}
 
+	/*
+	 * Method to deposit funds into an account.
+	 * Exception is thrown when the user attempts to deposit a negative amount.
+	 */
 	public void deposit(double funds) throws Negative_Exception {
 
 		if (funds > 0) 

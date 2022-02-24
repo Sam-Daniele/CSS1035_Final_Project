@@ -32,8 +32,11 @@ public class Checking_S2022_Group_1 extends Account_S2022_Group_1 {
 			
 	}
 
-	// Method to charge fees if more than x amount of withdrawals are made
-	// Set to 2 for now just to make testing easier
+	/* 
+	 * Method to charge fees if more than x amount of withdrawals are made.
+	 * Set to 2 for now just to make testing easier.
+	 * Example: Once the user makes more than 2 withdrawals, a fee is added to the withdrawal amount.
+	 */
 	public void withdrawFees() {
 		if (numOfWithdrawals > 2) {
 			setBalance(getBalance() - feeCharge);
