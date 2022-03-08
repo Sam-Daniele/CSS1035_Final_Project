@@ -28,11 +28,11 @@ public class Banking_Application_S2022_Group_1 {
 		
 		String nameValue = name.nextLine();
 		
-		// Normalization of name
+		// Normalization of entered name
 		
         nameValue = Normalizer.normalize(nameValue, Normalizer.Form.NFKC);
         
-        // Validation of name
+        // Validation of entered name
 		
 		Pattern regex = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
 		     
