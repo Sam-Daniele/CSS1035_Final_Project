@@ -1,14 +1,60 @@
 package banking_application;
 
 import java.util.Scanner;
+import java.text.Normalizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Banking_Application_S2022_Group_1 {
 
 	public static void main(String[] args) {
 		
 		Checking_S2022_Group_1 checkingAccount = new Checking_S2022_Group_1();
-
+		
 		System.out.println("Welcome to Group 1 Bank.");
+		
+		/*
+		 * While loop is used to prevent application from crashing/terminating on errors.
+		 * Verifies that user enters a valid name.
+		 */
+		
+		while(true)
+			
+		{
+		
+		System.out.println("Enter your first and last name.");
+		
+		Scanner name = new Scanner(System.in);
+		
+		String nameValue = name.nextLine();
+		
+		// Normalization of entered name
+		
+        nameValue = Normalizer.normalize(nameValue, Normalizer.Form.NFKC);
+        
+        // Validation of entered name
+		
+		Pattern regex = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
+		     
+		Matcher matcher = regex.matcher(nameValue);
+		 
+		if (matcher.find())
+			 
+		{
+			 
+		System.out.println("Value entered is not a valid name.");
+		 
+		}
+		 
+		else 
+			 
+		{
+			 
+		break;
+		
+		}
+	       
+		}
 		
 		Scanner deposit = new Scanner(System.in);
 		
