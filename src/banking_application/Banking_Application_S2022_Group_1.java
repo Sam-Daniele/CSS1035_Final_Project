@@ -126,12 +126,13 @@ public class Banking_Application_S2022_Group_1 {
 	 static String encodePassword(String q) throws NoSuchAlgorithmException
 	 
 	 {
-		 
+		 	
 		 MessageDigest md = MessageDigest.getInstance("SHA-256");
 		 
 		 byte[] digest = md.digest(q.getBytes());
 		 
-	     String encodedPassword = Base64.getUrlEncoder().encodeToString(digest);
+	     String encodedPassword = Base64.getEncoder().encodeToString(digest);
+	   
 		 
 		 return encodedPassword;
 
