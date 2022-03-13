@@ -21,52 +21,41 @@ public class Banking_Application_S2022_Group_1 {
 		 * Verifies that user enters a valid name.
 		 */
 		
-		while(true)
+		while(true){
 			
-		{
+			System.out.println("Enter your first and last name.");
+				
+			Scanner name = new Scanner(System.in);
+				
+			String nameValue = name.nextLine();
+				
+				
+			// Normalization of entered name
 			
-		System.out.println("Enter your first and last name.");
-			
-		Scanner name = new Scanner(System.in);
-			
-		String nameValue = name.nextLine();
-			
-			
-		// Normalization of entered name
-		
-        nameValue = Normalizer.normalize(nameValue, Normalizer.Form.NFKC);
-        
-        // Validation of entered name
-		
-		Pattern regex = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
-		     
-		Matcher matcher = regex.matcher(nameValue);
-		 
-		if (matcher.find())
-			 
-		{
-			 
-		System.out.println("Value entered is not a valid name.");
-		 
-		}
-		 
-		else 
-			 
-		{
-		
-		// Output encoding of entered password
-			
-		System.out.println("Enter your password.");
-			
-		Scanner password = new Scanner(System.in);
-			
-		String passwordValue = password.nextLine();
+	        nameValue = Normalizer.normalize(nameValue, Normalizer.Form.NFKC);
 	        
-	    System.out.println("You have logged in as " + nameValue + " with password: " + encodePassword(passwordValue));
-	    
-		break;
-		
-		}
+	        // Validation of entered name
+			
+			Pattern regex = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
+			     
+			Matcher matcher = regex.matcher(nameValue);
+			 
+			if (matcher.find()){		 
+				System.out.println("Value entered is not a valid name."); 
+			}else{	
+			// Output encoding of entered password
+				
+				System.out.println("Enter your password.");
+					
+				Scanner password = new Scanner(System.in);
+					
+				String passwordValue = password.nextLine();
+			        
+			    System.out.println("You have logged in as " + nameValue + " with password: " + encodePassword(passwordValue));
+			    
+				break;
+			
+			}
 	       
 		}
 		
