@@ -1,14 +1,63 @@
 package banking_application;
 
 import java.util.Scanner;
+import java.util.Base64;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.Normalizer;
 
 public class Banking_Application_S2022_Group_1 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchAlgorithmException {
 		
 		Checking_S2022_Group_1 checkingAccount = new Checking_S2022_Group_1();
-
+		
 		System.out.println("Welcome to Group 1 Bank.");
+		
+		/*
+		 * While loop is used to prevent application from crashing/terminating on errors.
+		 * Verifies that user enters a valid name.
+		 */
+		
+		while(true){
+			
+			System.out.println("Enter your first and last name.");
+				
+			Scanner name = new Scanner(System.in);
+				
+			String nameValue = name.nextLine();
+				
+				
+			// Normalization of entered name
+			
+	        nameValue = Normalizer.normalize(nameValue, Normalizer.Form.NFKC);
+	        
+	        // Validation of entered name
+			
+			Pattern regex = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
+			     
+			Matcher matcher = regex.matcher(nameValue);
+			 
+			if (matcher.find()){		 
+				System.out.println("Value entered is not a valid name."); 
+			}else{	
+			// Output encoding of entered password
+				
+				System.out.println("Enter your password.");
+					
+				Scanner password = new Scanner(System.in);
+					
+				String passwordValue = password.nextLine();
+			        
+			    System.out.println("You have logged in as " + nameValue + " with password: " + encodePassword(passwordValue));
+			    
+				break;
+			
+			}
+	       
+		}
 		
 		Scanner deposit = new Scanner(System.in);
 		
@@ -70,6 +119,23 @@ public class Banking_Application_S2022_Group_1 {
 		
 		withdraw.close();
 	
+	}
+	
+	// Method that returns the Base64 encoded SHA-256 hash of the entered password
+	
+	 static String encodePassword(String q) throws NoSuchAlgorithmException
+	 
+	 {
+		 	
+		 MessageDigest md = MessageDigest.getInstance("SHA-256");
+		 
+		 byte[] digest = md.digest(q.getBytes());
+		 
+	     String encodedPassword = Base64.getEncoder().encodeToString(digest);
+	   
+		 
+		 return encodedPassword;
+
 	}
 
 }
