@@ -13,6 +13,11 @@ public abstract class Account_S2022_Group_1 {
 		balance = newBalance;
 
 	}
+	
+	/*
+	 * The following getters and setters should be considered sensitive data.
+	 * These methods provide information relating to the user's account.
+	 */
 	public double getBalance() {
 
 		return balance;

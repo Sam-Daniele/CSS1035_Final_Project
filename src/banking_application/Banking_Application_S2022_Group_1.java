@@ -19,6 +19,7 @@ public class Banking_Application_S2022_Group_1 {
 		/*
 		 * While loop is used to prevent application from crashing/terminating on errors.
 		 * Verifies that user enters a valid name.
+		 * Contains sensitive data relating to the user's identity.
 		 */
 		
 		while(true){
@@ -39,7 +40,12 @@ public class Banking_Application_S2022_Group_1 {
 			Pattern regex = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
 			     
 			Matcher matcher = regex.matcher(nameValue);
-			 
+			
+			/*
+			 * The following if-statement prompts the user for their password.
+			 * User's password is considered sensitive data since it allows access to account.
+			 */
+			
 			if (matcher.find()){		 
 				System.out.println("Value entered is not a valid name."); 
 			}else{	
