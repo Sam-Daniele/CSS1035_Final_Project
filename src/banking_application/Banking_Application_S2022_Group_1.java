@@ -32,6 +32,11 @@ public class Banking_Application_S2022_Group_1 {
 				
 				
 			// Normalization of entered name
+			/*
+			 * Normalizing input before validating it prevents potential attackers
+			 * from bypassing filters and executing arbitrary code.
+			 * CMU Rule - IDS01-J 
+			 */
 			
 	        nameValue = Normalizer.normalize(nameValue, Normalizer.Form.NFKC);
 	        
@@ -128,6 +133,10 @@ public class Banking_Application_S2022_Group_1 {
 	}
 	
 	// Method that returns the Base64 encoded SHA-256 hash of the entered password
+	/*
+	 * Properly encodes the user's password so that it only contains valid characters upon output.
+	 * CMU Rule - IDS51-J
+	 */
 	
 	 static String encodePassword(String q) throws NoSuchAlgorithmException
 	 
