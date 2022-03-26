@@ -2,12 +2,15 @@ package banking_application;
 
 import java.util.Scanner;
 import java.util.Base64;
+import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.Normalizer;
@@ -32,6 +35,9 @@ public class Banking_Application_S2022_Group_1 {
             fileHandler.setFormatter(simple);
 
             LOGGER.addHandler(fileHandler);
+            
+            LOGGER.setUseParentHandlers(false);
+
 
         } catch (IOException e) {
             
@@ -63,6 +69,11 @@ public class Banking_Application_S2022_Group_1 {
 				
 				
 			// Normalization of entered name
+			/*
+			 * Normalizing input before validating it prevents potential attackers
+			 * from bypassing filters and executing arbitrary code.
+			 * CMU Rule: IDS01-J 
+			 */
 			
 	        nameValue = Normalizer.normalize(nameValue, Normalizer.Form.NFKC);
 	        
@@ -99,77 +110,199 @@ public class Banking_Application_S2022_Group_1 {
 	       
 		}
 		
-		Scanner deposit = new Scanner(System.in);
+		System.out.println("Would you like to access your: \n 1. Checkings \n 2. Savings");
 		
-		/*
-		 * While loop is used to prevent application from crashing/terminating on errors.
-		 * Verifies that user has enter a valid positive double amount.
-		 */
-		while(true) {
-			System.out.println("How much would you like to deposit into your checking account?");
-			if(deposit.hasNextDouble()) {
+		Scanner test = new Scanner(System.in);
 		
-				double depositValue = deposit.nextDouble();
+		int accountChoice = 0;
 		
-					try{
-						checkingAccount.deposit(depositValue);
-						LOGGER.info("User has deposited funds into their checking account.");
-					}
-					catch(Negative_Exception Neg_Exc){
-						System.out.println("You cannot deposit a negative number into your checking account.");
-						LOGGER.info("User has attempted to deposit negative funds into their checking account.");
-					}
-				break;
-					
-			}else {
-				System.out.println("Value inserted is not a valid number.");
-				LOGGER.info("User has selected a value that is not a valid number when depositing funds into their checking account.");
-				deposit.nextLine();
-			}
+		try 
+		
+		{
+			
+			accountChoice = test.nextInt();
 		}
-			
 		
-		Scanner withdraw = new Scanner(System.in);
+		catch(InputMismatchException e)
 		
-		/*
-		 * While loop is once again used to prevent application from crashing/terminating.
-		 * Verifies that the user enters a valid positive number that is less than the total balance.
-		 */
-		while(true) {		
-		System.out.println("How much would you like to withdraw from your checking account?");
+		{
 			
-			if(withdraw.hasNextDouble()) {
-				double withdrawValue = withdraw.nextDouble();
+			
+		}
+		
+		switch(accountChoice)
+		
+		{
+		
+		case 1:
+			
+		{
+			
+			while(true)
 				
-					try{
-						checkingAccount.withdraw(withdrawValue);
-						LOGGER.info("User has withdrawn funds from their checking account.");
+			{
+				
+			System.out.println("Would you like to: \n 1. Deposit \n 2. Withdraw \n 3. View Account Balance");
+			
+			Scanner test1 = new Scanner(System.in);
+			
+			int accountChoice1 = 0;
+			
+			try 
+			
+			{
+				
+				accountChoice1 = test1.nextInt();
+			}
+			
+			catch(InputMismatchException e)
+			
+			{
+				
+				
+			}
+			
+			if (accountChoice1 > 3)
+				
+			{
+				
+			break;
+			
+			}
+	
+			
+			switch(accountChoice1)
+			
+			{
+			
+			case 1:
+				
+			{
+				
+				Scanner deposit = new Scanner(System.in);
+				
+				/*
+				 * While loop is used to prevent application from crashing/terminating on errors.
+				 * Verifies that user has enter a valid positive double amount.
+				 */
+				while(true) {
+					System.out.println("How much would you like to deposit into your checking account?");
+					if(deposit.hasNextDouble()) {
+				
+						double depositValue = deposit.nextDouble();
+				
+							try{
+								checkingAccount.deposit(depositValue);
+								LOGGER.info("User has deposited funds into their checking account.");
+								
+							}
+							catch(Negative_Exception Neg_Exc){
+								System.out.println("You cannot deposit a negative number into your checking account.");
+								LOGGER.info("User has attempted to deposit negative funds into their checking account.");
+							
+							}
+						break;
+							
+					}else {
+						System.out.println("Value inserted is not a valid number.");
+						LOGGER.info("User has selected a value that is not a valid number when depositing funds into their checking account.");
+						deposit.nextLine();
+					}
+					
+					break;
+					
+				}
+				
+			break;
+						
+			}
+			
+			case 2:
+				
+			{
+			
+				Scanner withdraw = new Scanner(System.in);
+				
+				/*
+				 * While loop is once again used to prevent application from crashing/terminating.
+				 * Verifies that the user enters a valid positive number that is less than the total balance.
+				 */
+				while(true) {		
+				System.out.println("How much would you like to withdraw from your checking account?");
+					
+					if(withdraw.hasNextDouble()) {
+						double withdrawValue = withdraw.nextDouble();
+						
+							try{
+								checkingAccount.withdraw(withdrawValue);
+								LOGGER.info("User has withdrawn funds from their checking account.");
+								
+							}
+							catch(Negative_Exception Neg_Exc){
+								System.out.println("You cannot withdraw a negative number from your checking account.");
+								LOGGER.info("User has attempted to withdraw negative funds from their checking account.");
+							}
+							catch(Overdraft_Exception Overd_Exc) {
+								System.out.println("Balance is not enough to withdraw chosen amount.");
+								LOGGER.info("User has attempted to withdraw funds that is less than the balance of their checking account.");
+							}
+							break;
+					}else {
+						System.out.println("Value inserted is not a valid number.");
+						LOGGER.info("User has selected a value that is not a valid number when withdawing funds from their checking account.");
+						withdraw.nextLine();
+						
+						
 						
 					}
-					catch(Negative_Exception Neg_Exc){
-						System.out.println("You cannot withdraw a negative number from your checking account.");
-						LOGGER.info("User has attempted to withdraw negative funds from their checking account.");
-					}
-					catch(Overdraft_Exception Overd_Exc) {
-						System.out.println("Balance is not enough to withdraw chosen amount.");
-						LOGGER.info("User has attempted to withdraw funds that is less than the balance of their checking account.");
-					}
-					break;
-			}else {
-				System.out.println("Value inserted is not a valid number.");
-				LOGGER.info("User has selected a value that is not a valid number when withdawing funds from their checking account.");
-				withdraw.nextLine();
+					
+				break;
+				
+				}
+				
+			break;
+				
 			}
+			
+			case 3:
+				
+			{
+				
+			System.out.println("The balance of your checking account is " + checkingAccount.getBalance() + " dollars.");
+			
+			break;
+			
+			}
+			
+			}
+		
 		}
-		System.out.println("The balance of your checking account is " + checkingAccount.getBalance() + " dollars.");
 		
-		deposit.close();
+		break;
 		
-		withdraw.close();
+		}
+		
+		case 2:
+			
+		{
+			
+		System.out.println("Feature will be added soon");
+		
+		break;
+		
+		}
+		
+		
+		}
+		
 	
 	}
 	
 	// Method that returns the Base64 encoded SHA-256 hash of the entered password
+	/*
+	 * Properly encodes the user's password so that it only contains valid characters upon output.
+	 * CMU Rule: IDS51-J
+	 */
 	
 	 static String encodePassword(String q) throws NoSuchAlgorithmException
 	 
